@@ -1,0 +1,12 @@
+{
+  "name": "doc-activity-board",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main":"app.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0"
+  }
+}

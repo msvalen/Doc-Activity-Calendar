@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Apps Script API Quickstart</title>
+    <meta charset="utf-8" />
+    <script
+      src="https://kit.fontawesome.com/83ed4dcfb8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>   
+    <button onclick="authenticate().then(loadClient)">authorize and load</button>
+    <button onclick="execute()">execute</button>
+    <button onclick="findfiles()">find files</button>
+    
+    <form>
+        <input type='date' name='startT'>
+        <input type='date' name='endT'>
+        <div id='doccontainer'></div>
+    </form>
+    <div id='activity'></div>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src='app.js'></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+#doccontainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+#doccontainer  > * {
+    width: 7em;
+}
