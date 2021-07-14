@@ -9,18 +9,24 @@
     ></script>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>   
+  <body>
+   
     <button onclick="authenticate().then(loadClient)">authorize and load</button>
     <button onclick="execute()">execute</button>
     <button onclick="findfiles()">find files</button>
-    
     <form>
         <input type='date' name='startT'>
         <input type='date' name='endT'>
         <div id='doccontainer'></div>
     </form>
     <div id='activity'></div>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src='app.js'></script>
+     <script src="https://apis.google.com/js/api.js"></script>
+    <script src="/app.js"></script>
+    <script type='module'>
+      import * as keys from './key.js';
+      window.client_id=keys.CLIENT_ID;
+      window.api_key=keys.API_KEY;
+    </script>
+    </script>
   </body>
 </html>

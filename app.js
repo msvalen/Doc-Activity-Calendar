@@ -1,21 +1,21 @@
-//require('dotenv').config();
 
-const CLIENT_ID = process.env.CLIENT_ID ;
-const  API_KEY = process.env.API_KEY;
 /**
         * Sample JavaScript code for driveactivity.activity.query
         * See instructions for running APIs Explorer code samples locally:
         * https://developers.google.com/explorer-help/guides/code_samples#javascript
         */
-
- function authenticate() {
+console.log(window.client_id);
+function authenticate() {
     return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive.activity https://www.googleapis.com/auth/drive.activity.readonly https://www.googleapis.com/auth/drive.readonly"})
         .then(function() { console.log("Sign-in successful"); },
             function(err) { console.error("Error signing in", err); });
 }
+
+console.log(window.api_key);
 function loadClient() {
-    gapi.client.setApiKey(API_KEY);
+    console.log(window.api_key);
+    gapi.client.setApiKey(window.api_key);
     gapi.client.load("https://driveactivity.googleapis.com/$discovery/rest?version=v2");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
         .then(function() { console.log("GAPI client loaded for API"); },
@@ -45,14 +45,14 @@ function findfiles() {
     function(err) { console.error("Execute error", err); });
 }
 gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: CLIENT_ID});
+    gapi.auth2.init({client_id: window.client_id});
 });
 
 function showfiles(response){
     let div = document.querySelector('#doccontainer');
     let form = document.querySelector('form');
     
-    for(file of response.result.files){      
+    for(let file of response.result.files){      
         div.innerHTML+='<div><input type="checkbox" name="documents[]" value="'+file.id+'" <label><i class="fas fa-file-alt"></i>'+file.name+'</label></div>';
     }
     let button=document.createElement('button');
@@ -73,8 +73,8 @@ function getfilesactivities(e){
     window.timearray = [{date:window.endT.toLocaleDateString('en-SE'),count:0}];
 
     let finalarray = [];
-    for(input of e.target){
-        if(input.checked){finalarray.push(input.value)};
+    for(let input of e.target){
+        if(input.checked){finalarray.push(input.value);}
     }
    
     requestActivity(finalarray).then(x => step2());
@@ -83,7 +83,7 @@ function getfilesactivities(e){
 
 async function requestActivity(array){
     console.log(window.startT.getTime());
-    for(file of array){
+    for(let file of array){
         console.log(file);
         let i = 20;
         try{
@@ -92,7 +92,7 @@ async function requestActivity(array){
                 itemName: "items/"+file,
                 pageSize: 40,
                 filter: "time > "+window.startT.getTime()+" AND time < "+window.endT.getTime()
-                }
+                };
             do{                
                 response = await  gapi.client.driveactivity.activity.query(body);
                 activityProcessor(await response);
@@ -100,14 +100,14 @@ async function requestActivity(array){
                 i--;
             }
             while (response.result.nextPageToken && i>0);
-        }catch(e){console.log(e)}
+        }catch(e){console.log(e);}
     }
    
 }
 
 function activityProcessor(obj){
     console.log(obj);
-    for(activity of obj.result.activities){
+    for(let activity of obj.result.activities){
         if(activity.actors[0].user.knownUser.isCurrentUser){
             let now = new Date(activity.timestamp).toLocaleDateString('en-SE');
             let position = window.timearray.findIndex(x=> x.date == now);
@@ -156,8 +156,8 @@ function dosvg(){
     svg.setAttribute('width','850');
     svg.setAttribute('height','160');
     let day=new Date(window.timearray[0].date).getDay();
-    let week=1
-    for(date of window.timearray){
+    let week=1;
+    for(let date of window.timearray){
         let color = '#D5D8DC';
         if(date.count>0) color = '#5B2C6F';
         svg.innerHTML+= `<rect x="${15*(week)}" y="${15*(day%7)}" rx="2" ry="2" data-date="${date.date}" width="15" height="15" style="fill:${color};stroke:black;stroke-width:1;opacity:0.5"/>`;

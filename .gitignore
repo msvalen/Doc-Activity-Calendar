@@ -1,2 +1,6 @@
 .env
 node_modules
+key.js
+package.json
+server.js
+package-lock.json

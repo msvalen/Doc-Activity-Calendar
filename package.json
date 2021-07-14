@@ -2,8 +2,11 @@
   "name": "doc-activity-board",
   "version": "1.0.0",
   "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "node server.js"
+  },
   "keywords": [],
-  "main":"app.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
