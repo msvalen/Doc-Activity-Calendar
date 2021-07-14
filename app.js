@@ -1,6 +1,6 @@
 //require('dotenv').config();
 
-const CLIENT_ID = pocess.env.CLIENT_ID ;
+const CLIENT_ID = process.env.CLIENT_ID ;
 const  API_KEY = process.env.API_KEY;
 /**
         * Sample JavaScript code for driveactivity.activity.query
