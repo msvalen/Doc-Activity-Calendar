@@ -5,7 +5,7 @@
         * https://developers.google.com/explorer-help/guides/code_samples#javascript
         */
 
-const CLIENT_ID =window.client_id ||  process.env.CLIENT_ID;
+const CLIENT_ID = window.client_id ||  process.env.CLIENT_ID;
 const API_KEY = window.api_key || process.env.API_KEY ;
 
 
@@ -32,7 +32,7 @@ function loadClient() {
 }
 function onLoad(){ 
     gapi.load("client:auth2", function() {
-        gapi.auth2.init({client_id: CLIENT_ID});
+        gapi.auth2.init();
     });
 }
 
