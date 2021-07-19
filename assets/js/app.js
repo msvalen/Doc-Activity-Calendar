@@ -5,8 +5,8 @@
         * https://developers.google.com/explorer-help/guides/code_samples#javascript
         */
 
-const CLIENT_ID = process.env.CLIENT_ID | window.client_id ;
-const API_KEY = process.env.API_KEY | window.api_key;
+const CLIENT_ID =window.client_id ||  process.env.CLIENT_ID;
+const API_KEY = window.api_key || process.env.API_KEY ;
 
 
 function authenticate() {
@@ -25,11 +25,11 @@ function loadClient() {
             console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
 }
-  
-gapi.load("client:auth2", function() {
-    gapi.auth2.init({client_id: CLIENT_ID});
-});
-
+function onLoad(){ 
+    gapi.load("client:auth2", function() {
+        gapi.auth2.init({client_id: CLIENT_ID});
+    });
+}
 
 //DRIVE
 function findfiles() {
