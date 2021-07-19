@@ -59,11 +59,11 @@
     <imf src='/assets/src/closepadlock.png' id='padout'/>
 
     <script type='module'>
-      import * as keys from './assets/js/key.js';
+      import * as keys from './key.js';
       window.client_id=keys.CLIENT_ID;
       window.api_key=keys.API_KEY;
     </script>
-    <script src="https://apis.google.com/js/api.js" async defer ></script>
+    <script src="https://apis.google.com/js/api.js/platform.js?onload=onLoad" async defer ></script>
     <script src="/assets/js/app.js" async defer></script>
   </body>
 </html>
