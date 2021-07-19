@@ -4,12 +4,16 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "build": "node server.js"
+    "build": "browserify ./assets/js/app.js -o  ./assets/js/bundle.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browserify": "^17.0.0",
     "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "watchify": "^4.0.0"
   }
 }
