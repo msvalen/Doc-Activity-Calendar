@@ -4,10 +4,10 @@
         * See instructions for running APIs Explorer code samples locally:
         * https://developers.google.com/explorer-help/guides/code_samples#javascript
         */
-require('dotenv').config();
 
 const CLIENT_ID = process.env.CLIENT_ID | window.client_id ;
 const API_KEY = process.env.API_KEY | window.api_key;
+
 
 function authenticate() {
     return gapi.auth2.getAuthInstance()
