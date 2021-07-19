@@ -11,6 +11,7 @@ const API_KEY = window.api_key || process.env.API_KEY ;
 
 function authenticate() {
     try{
+        onLoad();
         const response = gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive.activity.readonly https://www.googleapis.com/auth/drive.metadata.readonly"})
         .then(function() { console.log("Sign-in successful"); },
@@ -18,7 +19,6 @@ function authenticate() {
         return response;
     }
     catch(e){
-        onLoad();
         return console.log(e)};
 }
 
