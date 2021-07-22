@@ -1,23 +1,13 @@
 
-/**
-        * Sample JavaScript code for driveactivity.activity.query
-        * See instructions for running APIs Explorer code samples locally:
-        * https://developers.google.com/explorer-help/guides/code_samples#javascript
-        */
-
-const CLIENT_ID = window.client_id ||  process.env.CLIENT_ID;
-const API_KEY = window.api_key || process.env.API_KEY ;
-
-
-function authenticate() {   
-        return gapi.auth2.getAuthInstance()
+function authenticate() {
+    return gapi.auth2.getAuthInstance()
         .signIn({scope: "https://www.googleapis.com/auth/drive.activity.readonly https://www.googleapis.com/auth/drive.metadata.readonly"})
         .then(function() { console.log("Sign-in successful"); },
             function(err) { console.error("Error signing in", err); });
 }
 
 function loadClient() {
-    gapi.client.setApiKey(API_KEY);
+    //gapi.client.setApiKey(API_KEY);
     gapi.client.load("https://driveactivity.googleapis.com/$discovery/rest?version=v2");
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
         .then(function() { 
@@ -25,7 +15,7 @@ function loadClient() {
             console.log("GAPI client loaded for API"); },
               function(err) { console.error("Error loading GAPI client for API", err); });
 }
-function onLoad(){ 
+function load(){
     gapi.load("client:auth2", function() {
         gapi.auth2.init();
     });

@@ -3,7 +3,6 @@
   <head>
     <title>Docs Activity Board</title>
     <meta charset="utf-8" />
-    <meta name="google-signin-client_id" content="679143821411-pntvmejotkqdgpn2o9bcmb5v23s0meoa.apps.googleusercontent.com">
     <script
       src="https://kit.fontawesome.com/83ed4dcfb8.js"
       crossorigin="anonymous"
@@ -11,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 105 105%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
-
+    <meta name="google-signin-client_id" content="679143821411-pntvmejotkqdgpn2o9bcmb5v23s0meoa.apps.googleusercontent.com">
   </head>
   <body>
     <div class="container is-max-desktop has-background-white	" >
@@ -55,16 +54,14 @@
       </section>
     </div>
 
-    <img src='/assets/src/TheHAND.png' id='theHand'/>
-    <imf src='/assets/src/closepadlock.png' id='padout'/>
+    <img src='/assets/src/TheHAND.png' id='theHand'>
+    <imf src='/assets/src/closepadlock.png' id='padout'>
 
-    <script type='module'>
-      import * as keys from './key.js';
-      window.client_id=keys.CLIENT_ID;
-      window.api_key=keys.API_KEY;
-      onLoad();
-    </script>
-    <script src="https://apis.google.com/js/api.js" async defer ></script>
+    
+    <script  async defer src="https://apis.google.com/js/api.js" 
+    onload = "this.onload=function(){};load()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()"
+    ></script>
     <script src="/assets/js/app.js" async defer></script>
   </body>
 </html>
