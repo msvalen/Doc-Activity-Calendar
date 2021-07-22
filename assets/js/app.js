@@ -26,7 +26,7 @@ function load(){
 function logoutclient(){
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut()
-    auth2.revokeAccess().then(function () {
+    auth2.disconnect().then(function () {
         hidebyid('logoutButt');
         showbyid('loginButt');
         //console.log('User signed out.');
