@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Docs Activity Board</title>
+    <meta charset="utf-8" />
+    <script
+      src="https://kit.fontawesome.com/83ed4dcfb8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 105 105%22><text y=%22.9em%22 font-size=%2290%22>💅</text></svg>">
+   
+  </head>
+  <body>
+    <div class="container is-max-desktop has-background-white	" >
+      <section class="section" id='1stStep'>
+        <div class="content">
+          <h3>Doc Activity Board</h3>
+          <p>This website will give you a calendar github style with the activities on a document or a serie of documents </p>
+          <p>The required permisions are for the drive metafiles API and for the activity API</p>
+          <p>This app doesn't need your email and all the other things that it says in the oauth window apart from the required drive and actiivity, I think its a default and the alternative is create my own window which i haven done</p>
+          <p>The logout button will also revoke any permisions given to this website, this is intentional</p>
+          <button onclick="authenticate().then(loadClient)" id='loginButt' class="button is-primary is-outlined">Log in</button>
+          <button onclick='logoutclient()' id='logoutButt' class="button is-primary is-outlined">Log out</button>
+        </div>
+        <button onclick="findfiles()" class="button is-link" id='finder'>Find Documents on my drive</button>
+      </section>
+
+      <section class="section"  id='TrdStep'>
+        <div class="content">
+          <form>
+            <div class="field" >
+              <label class="label"> Period </label>
+              <select name="period" id="period" class="select is-primary" required>
+                <option value="31557600000">1 Year</option>
+                <option value="15778800000">6 Months</option>
+                <option value="7889400000">3 Months</option>
+                <option value="5259600000">2 Months</option>
+                <option value="2629800000">1 Months</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="label">From</label>
+              <input class='input date' type='date' name='endT' required>
+            </div>
+            <div class='box'>
+              <div id='doccontainer' class="field"></div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section"  id='FthStep'>
+        <div id='activity'></div>
+        <button onclick="showbyid('finder')" class="button is-primary" id='again'>Again please</button>
+      </section>
+    </div>
+
+    <img src='/assets/src/TheHAND.png' id='theHand'>
+    <imf src='/assets/src/closepadlock.png' id='padout'>
+
+    <script src="/assets/js/app.js"></script>
+    <script  async defer src="https://apis.google.com/js/api.js" 
+    onload = "this.onload=function(){};load()"
+    onreadystatechange="if (this.readyState === 'complete') this.onload()"
+    ></script>    
+  </body>
+</html>

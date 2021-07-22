@@ -1,0 +1,59 @@
+#doccontainer{
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    max-height: 50vh;
+}
+#doccontainer  > * {
+    width: 7em;
+}
+body{    
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding-top: 5em;
+}
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(184, 115, 240);
+}
+.container{
+    border: 8px solid rgb(61, 58, 58);
+    border-radius: 5px;
+    box-shadow: 8px 8px 0px rgb(255, 171, 0);
+}
+[type="checkbox"]{
+    display:none;
+}
+
+label.checkbox:hover, [type="checkbox"]:checked + label.checkbox {
+    color: purple;
+}
+label i{
+    font-size: 3em;
+}
+label.checkbox{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 7em;
+}
+label.checkbox:hover{
+    max-width: fit-content;
+    background-color: white;
+    display: block;
+    overflow: visible;
+    line-height: 3rem;
+}
+.date{
+    width: 15vw;
+}
+#theHand{
+    margin-bottom: -6px;
+    margin-left: 28vw;
+}
+#finder, #TrdStep, #FthStep, #logoutButt{
+    display: none;
+}
