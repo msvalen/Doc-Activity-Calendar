@@ -220,8 +220,7 @@ function showbyid(id){
  * form disapears
  * maybe show a loading with an animation of the files
  * svg apears while color and style can be change dinamicaly by buttons
- * then is 
- * 
+ * then is  
  * 
  * 
  */
