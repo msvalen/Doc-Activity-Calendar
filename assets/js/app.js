@@ -12,12 +12,23 @@ function loadClient() {
     return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
         .then(function() { 
             showbyid('finder');
-            console.log("GAPI client loaded for API"); },
+            hidebyid('loginButt');
+            showbyid('logoutButt');
+            //console.log("GAPI client loaded for API"); 
+        },
               function(err) { console.error("Error loading GAPI client for API", err); });
 }
 function load(){
     gapi.load("client:auth2", function() {
         gapi.auth2.init();
+    });
+}
+function logoutclient(){
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        hidebyid('logoutButt');
+        showbyid('loginButt');
+        //console.log('User signed out.');
     });
 }
 
@@ -32,7 +43,7 @@ function findfiles() {
         hidebyid('finder');
         hidebyid('FthStep');
         showbyid('TrdStep');
-        console.log("Response", response);
+        //console.log("Response", response);
     },
     function(err) { console.error("Execute error", err); });
 }
@@ -58,9 +69,9 @@ function showfiles(response){
 
 //ACTIVITY
 async function requestActivity(array){
-    console.log(window.startT.getTime());
+    //console.log(window.startT.getTime());
     for(let file of array){
-        console.log(file);
+        //console.log(file);
         let i = 20;
         try{
             let response;
@@ -83,7 +94,7 @@ async function requestActivity(array){
 
 
 function activityProcessor(obj){
-    console.log(obj);
+    //console.log(obj);
     for(let activity of obj.result.activities){
         if(activity.actors[0].user.knownUser.isCurrentUser){
             let now = new Date(activity.timestamp).toLocaleDateString('en-SE');
@@ -109,13 +120,13 @@ function step2(){
     timearrayAddSpaces();
     dosvg();
     showbyid('FthStep');
-    console.log(window.timearray);
+    //console.log(window.timearray);
 }
 
 //FORM
 function getfilesactivities(e){
     e.preventDefault();
-    console.log(e);
+    //console.log(e);
     
     window.endT = new Date(e.target.endT.value);
     window.startT = new Date(window.endT.getTime()-Number(e.target.period.value));
@@ -125,8 +136,7 @@ function getfilesactivities(e){
     for(let input of e.target){
         if(input.checked){finalarray.push(input.value);}
     }
-   
-    requestActivity(finalarray).then(x => step2());
+    if(!!finalarray[0]) requestActivity(finalarray).then(x => step2());
 }
 
 //EXTRA TIME ARRAY SVG
@@ -180,9 +190,6 @@ function hidebyid(id){
 }
 function showbyid(id){
     document.getElementById(id).style.display = 'block';
-}
-function again(){
-    
 }
 
 /*** TODO

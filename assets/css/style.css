@@ -54,6 +54,6 @@ label.checkbox:hover{
     margin-bottom: -6px;
     margin-left: 28vw;
 }
-#finder, #TrdStep, #FthStep{
+#finder, #TrdStep, #FthStep, #logoutButt{
     display: none;
 }
